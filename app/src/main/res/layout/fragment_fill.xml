@@ -5,37 +5,22 @@
     tools:context="jasmine.vsnick.attendence.Fill">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/date"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <TextView
-        android:id="@+id/no_of_periods_text"
-        android:layout_width="wrap_content"
-        android:layout_height="50sp"
-        android:gravity="center_vertical"
-        android:textSize="20sp"
-        android:text="No of Periods Attended:"
-        android:layout_below="@+id/date" />
-    <EditText
-        android:id="@+id/no_of_periods"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/no_of_periods_text"
-        android:layout_below="@+id/date" />
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
     <Button
         android:onClick="update"
-        android:text="OK"
+        android:layout_below="@id/listview"
+        android:text="Update"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_below="@+id/no_of_periods"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="cancel"
+        android:text="Cancel"
+        android:layout_below="@+id/listview"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
@@ -23,7 +24,6 @@ public class Fill extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         date = getArguments().getString("date");
         return inflater.inflate(R.layout.fragment_fill, container, false);
     }
@@ -31,11 +31,12 @@ public class Fill extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.d("vsn", "onStart: ");
         DBHelper dbHelper=new DBHelper(getActivity().getApplicationContext(),"myDB",1);
-        TextView textView= (TextView) getActivity().findViewById(R.id.date);
-        textView.setText(date);
-        EditText editText = (EditText) getActivity().findViewById(R.id.no_of_periods);
-        editText.setText(dbHelper.no_of_periods(date));
+        ListView listView = (ListView) getActivity().findViewById(R.id.listview);
+        String s = dbHelper.no_of_periods(date);
+        s.trim();
+        String[] periods = s.split(" ");
+        CustomAdapter customAdapter = new CustomAdapter(getActivity().getApplicationContext(),periods);
+        listView.setAdapter(customAdapter);
     }
 }

@@ -1,7 +1,12 @@
 package jasmine.vsnick.attendence;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.media.RingtoneManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,11 +59,9 @@ public class MainActivity extends AppCompatActivity {
         int t = Integer.parseInt(sharedPreferences.getString("TotalPeriods","0"));
         DBHelper dbHelper =new DBHelper(MainActivity.this,"myDB",1);
         int a = dbHelper.periods_attended();
-        Log.d("vsn", "onResume: "+t+" "+a);
         float atten=0;
         if(t!=0)
             atten=((float)a/t)*100;
-        Log.d("vsn", "onResume: "+String.valueOf(atten));
         textView.setText("Attendence:"+(atten));
     }
 }
