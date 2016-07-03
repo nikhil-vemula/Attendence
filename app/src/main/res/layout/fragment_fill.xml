@@ -6,7 +6,19 @@
     tools:context="jasmine.vsnick.attendence.Fill">
 
     <!-- TODO: Update blank fragment layout -->
+    <Switch
+        android:padding="5sp"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/myrect"
+        android:textSize="20sp"
+        android:id="@+id/holiday"
+        android:text="Holiday"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <ListView
+        android:layout_below="@id/holiday"
         android:divider="@color/colorBackground"
         android:dividerHeight="5dp"
         android:id="@+id/listview"
@@ -20,7 +32,8 @@
         android:layout_below="@id/listview"
         android:text="Update"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/button" />
     <Button
         android:layout_margin="5dp"
         android:background="@drawable/myrect"

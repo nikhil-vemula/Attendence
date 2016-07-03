@@ -9,8 +9,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorBackground"
     tools:context="jasmine.vsnick.attendence.MainActivity">
-
     <CalendarView
+        android:backgroundTint="#bbdefb"
         android:background="@drawable/myrect"
         android:id="@+id/calender"
         android:layout_width="match_parent"

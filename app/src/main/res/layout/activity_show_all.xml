@@ -37,6 +37,7 @@
         android:layout_height="wrap_content">
     </ListView>
     <Button
+        android:layout_margin="5sp"
         android:text="Delete All"
         android:layout_centerHorizontal="true"
         android:onClick="deleteTable"

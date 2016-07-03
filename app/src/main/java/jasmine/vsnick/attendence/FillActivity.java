@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,9 +75,8 @@ public class FillActivity extends AppCompatActivity {
     }
     public void update(View view)
     {
-        try {
+        String s="";
             ListView listView = (ListView) findViewById(R.id.listview);
-            String s="";
             View v;
             TextView t;
             CheckBox ch;
@@ -84,37 +84,32 @@ public class FillActivity extends AppCompatActivity {
                 v = listView.getChildAt(i);
                 ch = (CheckBox) v.findViewById(R.id.rowCheck);
                 t = (TextView) v.findViewById(R.id.period);
-                if(t.getText().toString().equals("Free Period"))
-                    s+="free ";
-                else if(ch.isChecked())
-                    s+="true ";
+                if (t.getText().toString().equals("Free Period"))
+                    s += "free ";
+                else if (ch.isChecked())
+                    s += "true ";
                 else
-                    s+="false ";
+                    s += "false ";
             }
-            dbhelper.update(date,s);
-            int f=0;
+            dbhelper.update(date, s);
+            int f = 0;
             s.trim();
-            for(String i:s.split(" "))
-                if(i.equals("free"))
+            for (String i : s.split(" "))
+                if (i.equals("free"))
                     f++;
-            Log.d("vsn", "update: "+f);
-            SharedPreferences sharedPreferences = getSharedPreferences("myPref",MODE_PRIVATE);
-            int total = Integer.parseInt(sharedPreferences.getString("TotalPeriods",null));
-            if(total>=8)
-                total=(total-8);
+            Log.d("vsn", "update: " + f);
+            SharedPreferences sharedPreferences = getSharedPreferences("myPref", MODE_PRIVATE);
+            int total = Integer.parseInt(sharedPreferences.getString("TotalPeriods", null));
+            if (total >= 8)
+                total = (total - 8);
             else
                 total = 0;
-            total+=8-f;
-            SharedPreferences.Editor editor=sharedPreferences.edit();
-            editor.putString("TotalPeriods",String.valueOf(total));
+            total += 8 - f;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("TotalPeriods", String.valueOf(total));
             editor.commit();
             Toast.makeText(this, "updated", Toast.LENGTH_SHORT).show();
             finish();
-        }
-        catch (NumberFormatException e)
-        {
-            Toast.makeText(this, "Enter Valid Number", Toast.LENGTH_SHORT).show();
-        }
     }
     void addDate()
     {

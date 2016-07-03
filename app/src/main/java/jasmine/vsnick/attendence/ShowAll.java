@@ -117,6 +117,10 @@ public class ShowAll extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("myPref",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("TotalPeriods", "0");
+                        editor.commit();
                         dbHelper.delete();
                         onResume();
                     }
