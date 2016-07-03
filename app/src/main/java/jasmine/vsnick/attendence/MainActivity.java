@@ -1,7 +1,10 @@
 package jasmine.vsnick.attendence;
 
+import android.app.AlarmManager;
+import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,12 +29,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getApplicationContext().deleteDatabase("myDB");
+        //getApplicationContext().deleteDatabase("myDB");
         SharedPreferences sharedPreferences = getSharedPreferences("myPref",MODE_PRIVATE);
-        //if(sharedPreferences.getString("TotalPeriods",null) == null)
-        if(true){
+        if(sharedPreferences.getString("TotalPeriods",null) == null){
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("TotalPeriods", "0");
+            editor.commit();
+        }
+        if(sharedPreferences.getBoolean("new",true) == true)
+        {
+            Log.d("vsn", "onCreate:new");
+            Intent myIntent = new Intent(MainActivity.this , NotifyIntentService.class);
+            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+            PendingIntent pendingIntent = PendingIntent.getService(MainActivity.this, 0, myIntent, 0);
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH),16,0,0);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 24*60*60*1000 , pendingIntent);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("new",false);
             editor.commit();
         }
         calendar= (CalendarView) findViewById(R.id.calender);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:background="#fff"
+    android:background="#d3d3d3"
     android:descendantFocusability="blocksDescendants"
     android:weightSum="4"
     android:layout_width="match_parent"

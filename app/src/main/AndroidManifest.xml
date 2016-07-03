@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".FillActivity" />
         <activity android:name=".ShowAll"></activity>
+        <service android:name=".NotifyIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>

@@ -2,6 +2,8 @@ package jasmine.vsnick.attendence;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.FragmentManager;
@@ -65,6 +67,10 @@ public class FillActivity extends AppCompatActivity {
         fragment.setArguments(bundle);
         fragmentTransaction.add(R.id.frame,fragment,"fill");
         fragmentTransaction.commit();
+        String svc = Context.NOTIFICATION_SERVICE;
+        NotificationManager notificationManager
+                = (NotificationManager)getSystemService(svc);
+        notificationManager.cancelAll();
     }
     public void update(View view)
     {
