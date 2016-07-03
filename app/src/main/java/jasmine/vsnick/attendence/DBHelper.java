@@ -93,6 +93,13 @@ public class DBHelper extends SQLiteOpenHelper{
         // Create tables again
         onCreate(db);
     }
+    public void delete()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " +"atten");
+        // Create tables again
+        onCreate(db);
+    }
     public ArrayList<String> show()
     {
         ArrayList<String> list = new ArrayList<String>();

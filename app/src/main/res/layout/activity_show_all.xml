@@ -7,16 +7,42 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBackground"
     tools:context="jasmine.vsnick.attendence.ShowAll">
     <TextView
+        android:layout_weight="1"
+        android:elevation="5sp"
+        android:layout_margin="2sp"
+        android:background="@drawable/myrect"
         android:id="@+id/total"
         android:textSize="20sp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:elevation="5sp"
+        android:layout_marginTop="2sp"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/myrect"
+        android:layout_below="@id/total"
+        android:id="@+id/attended"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <ListView
-        android:layout_below="@id/total"
+        android:dividerHeight="3sp"
+        android:divider="@color/colorBackground"
+        android:layout_below="@id/attended"
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     </ListView>
+    <Button
+        android:text="Delete All"
+        android:layout_centerHorizontal="true"
+        android:onClick="deleteTable"
+        android:id="@+id/deleteAll"
+        android:layout_below="@id/list"
+        android:background="@drawable/myrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
